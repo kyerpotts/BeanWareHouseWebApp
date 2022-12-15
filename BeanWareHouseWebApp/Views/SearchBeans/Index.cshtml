@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class='formfields'>
+    <div class='beanfields'>
+        <div class='beaninputs'>
+            <div>
+                <label for="size">
+                    <input type="radio" id="size" name="type" value="size" Text="Size" />
+                    Size
+                </label>
+            </div>
+            <div>
+                <label for="colour">
+                    <input type="radio" id="colour" name="type" value="colour" Text="Colour" />
+                    Colour
+                </label>
+            </div>
+            <div>
+                <label for="weight">
+                    <input type="radio" id="weight" name="type" value="weight" Text="Weight" />
+                    Weight
+                </label>
+            </div>
+            <div>
+                <label for="price">
+                    <input type="radio" id="price" name="type" value="price" Text="Price" />
+                    Price
+                </label>
+            </div>
+            <div>
+                <input type="text" id="searchtext" name="searchtext" placeholder="Search Text" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modbuttons">
+    <button id="searchbeans" onclick="searchBeans()">Search</button>
+</div>
+<div id="returnedlist" style="height: 200px; overflow-y: scroll;">
+</div>
+
+<script>
+    function clearFields() {
+        $("#searchtext").val("");
+        var radioButtons = document.querySelectorAll('input[name="type"]');
+        radioButtons.forEach(function (radioButton) {
+            radioButton.checked = false;
+        });
+    }
+
+    function loadResults(data) {
+        var beans = JSON.parse(data);
+
+        var div = document.getElementById('returnedlist');
+        div.innerHTML = '';
+        var ul = document.createElement('ul');
+
+        for (var i = 0; i < beans.length; i++) {
+            var bean = beans[i];
+
+            var li = document.createElement('li');
+
+            li.innerHTML = `Size: ${bean.size}, Colour: ${bean.colour}, Weight: ${bean.weight}, Price: ${bean.price}`;
+
+            ul.appendChild(li);
+        }
+
+        div.appendChild(ul);
+    }
+
+    function searchBeans() {
+        var selectedRadio = document.querySelector('input[name="type"]:checked');
+        var type = selectedRadio.value;
+        var value = $("#searchtext").val();
+        var url = '/SearchBeans/' + type + '/' + value;
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            contentType: 'application/json',
+            success: function (data, textStatus, jQxhr) {
+                clearFields();
+                loadResults(data);
+            },
+            error: function (jqxhr, textStatus, errorThrown) {
+                alert("All fields are required");
+            }
+        });
+    }
+</script>

@@ -1,0 +1,108 @@
+body {
+    width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+div#header {
+    display: block;
+    background-color: darkseagreen;
+    background-size: 1024px 100px;
+    height: auto;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    padding: 30px;
+    color: darkred;
+}
+
+div#nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: brown;
+}
+
+div#nav li {
+    float: left;
+}
+
+    div#nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+    }
+
+        div#nav li a:hover {
+            background-color: burlywood;
+        }
+
+div#main {
+    background-color: paleturquoise;
+    height: 400px;
+}
+
+div#countview {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div#fieldbox {
+    width: 300px;
+    padding-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#modbuttons {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.beanfields {
+    display: grid;
+}
+
+    .beanfields > * {
+        grid-column-start: 1;
+        grid-row-start: 1;
+        justify-self: center;
+    }
+
+        .beanfields > *:last-child {
+            justify-self: right;
+        }
+
+.beaninputs {
+    display: block;
+}
+
+.formfields {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    transform: translateX(10px)
+}
+
+
+div#modbuttons {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    display: inline-block;
+    margin: 5px;
+}
+
+button {
+    margin: 5px;
+}

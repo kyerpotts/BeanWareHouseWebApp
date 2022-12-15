@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/site.css">
+
+</head>
+<body>
+    <div id="header">Bean Warehouse Application</div>
+    <div id="nav">
+        <ul>
+            <li> <a href="/Home">Home</a> </li>
+            <li> <a href="/SearchBeans">Search Beans</a> </li>
+            <li> <a href="/AddBeans">Add Beans</a> </li>
+            <li> <a href="/DeleteBeans">Delete Beans</a> </li>
+            <li> <a href="/EditBeans">Edit Beans</a> </li>
+        </ul>
+    </div>
+
+    <div id="main">
+        @RenderBody()
+    </div>
+    <div id="footer">
+        <p>Written by Kyer Potts for DC tutorial 6 - Reused in DA Part A</p>
+    </div>
+    <script src="~/js/site.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>
+

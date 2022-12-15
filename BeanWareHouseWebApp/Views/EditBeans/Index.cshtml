@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class='formfields'>
+    <div class='beanfields'>
+        <div class='beaninputs'>
+            <div>
+                <input type="text" id="index" name="index" placeholder="index" />
+            </div>
+            <div>
+                <input type="text" id="size" name="size" placeholder="Size" />
+            </div>
+            <div>
+                <input type="text" id="colour" name="colour" placeholder="Colour" />
+            </div>
+            <div>
+                <input type="text" id="weight" name="weight" placeholder="Weight" />
+            </div>
+            <div>
+                <input type="text" id="price" name="price" placeholder="Price" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modbuttons">
+    <button id="updatebean" onclick="updateBean()">Update Bean</button>
+</div>
+
+<script>
+    function clearFields() {
+        $("#index").val("");
+        $("#size").val("");
+        $("#colour").val("");
+        $("#weight").val("");
+        $("#price").val("");
+    }
+
+    function updateBean() {
+            $.ajax({
+                type: 'PUT',
+                url: '/EditBean/' + $("#index").val() + '/' + $("#size").val() +'/' + $("#colour").val() + '/'  + $("#weight").val() + '/' + $("#price").val() + '/', 
+                contentType: 'application/json',
+                success: function (data, textStatus, jQxhr) {
+                    alert(data);
+                    clearFields();
+                },
+                error: function (jqxhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+    }
+</script>

@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class='formfields'>
+    <div class='beanfields'>
+        <div class='beaninputs'>
+            <div>
+                <input type="text" id="index" name="index" placeholder="index" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modbuttons">
+    <button id="deletebean" onclick="deleteBean()">Delete</button>
+</div>
+
+<script>
+    function clearFields() {
+        $("#index").val("");
+    }
+
+    function deleteBean() {
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/DeleteBean/' + $("#index").val(),
+            contentType: 'application/json',
+            processData: false,
+            success: function (data, textStatus, jQxhr) {
+                alert("Delete successful");
+                clearFields();
+            },
+            error: function (jqxhr, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+    }
+</script>

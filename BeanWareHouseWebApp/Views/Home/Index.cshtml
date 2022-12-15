@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @using FALib2;
+    @model IEnumerable<Bean>;
+}
+<h1>This is the beans database web app</h1>
+
+<div style="height: 300px; overflow-y: scroll;">
+    <ul>
+        @foreach (var bean in Model)
+        {
+            var itemString = $"Size: {bean.size}, Colour: {bean.colour}, Weight: {bean.weight}, Price: {bean.price}";
+            <li>@itemString</li>
+        }
+    </ul>
+</div>
